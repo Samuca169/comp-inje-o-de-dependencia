@@ -1,7 +1,9 @@
 package com.samucabarr.services;
 
 import com.samucabarr.entities.Order;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShippingService {
 
     public double shipment(Order order) {

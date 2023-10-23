@@ -6,12 +6,18 @@ import com.samucabarr.services.ShippingService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-import java.util.Locale;
-import java.util.Scanner;
 
 @SpringBootApplication
+@ComponentScan({"com.samucabarr"})
 public class DesafioSpringbootApplication implements CommandLineRunner {
+
+	OrderService orderService;
+
+	public DesafioSpringbootApplication(OrderService orderService) {
+		this.orderService = orderService;
+	}
 
 	public static void main(String[] args) {
 
@@ -26,6 +32,6 @@ public class DesafioSpringbootApplication implements CommandLineRunner {
 		OrderService os = new OrderService(ss);
 
 		System.out.println("Pedido código " + order.getCode());
-		System.out.println("Valor total: R$ "  + String.format("%.2f", os.total(order)));
+		System.out.println("Valor total: R$ " + String.format("%.2f", os.total(order)));
 	}
 }
